@@ -11,6 +11,7 @@ import AnswerModeToggle from '@/components/interview/AnswerModeToggle'
 import TextAnswerInput from '@/components/interview/TextAnswerInput'
 import MultipleChoiceInput from '@/components/interview/MultipleChoiceInput'
 import SubmitButton from '@/components/interview/SubmitButton'
+import VoiceRecorder from '@/components/interview/VoiceRecorder'
 import StreamingText from '@/components/results/StreamingText'
 import { ArrowRight, RefreshCw } from 'lucide-react'
 
@@ -224,11 +225,17 @@ export default function InterviewPage() {
                 />
 
                 {answerMode === 'text' || !question.choices ? (
-                  <TextAnswerInput
-                    value={textAnswer}
-                    onChange={setTextAnswer}
-                    disabled={submitting}
-                  />
+                  <div className="space-y-3">
+                    <TextAnswerInput
+                      value={textAnswer}
+                      onChange={setTextAnswer}
+                      disabled={submitting}
+                    />
+                    <VoiceRecorder
+                      onTranscript={(text) => setTextAnswer((prev) => prev ? prev + ' ' + text : text)}
+                      disabled={submitting}
+                    />
+                  </div>
                 ) : (
                   <MultipleChoiceInput
                     choices={question.choices}
