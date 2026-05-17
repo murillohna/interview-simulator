@@ -118,9 +118,8 @@ export default function VoiceRecorder({ onTranscript, disabled }: Props) {
       recorder.start(100)
 
       // Web Speech API for real-time transcript
-      const SR =
-        (window as Window & { SpeechRecognition?: typeof SpeechRecognition; webkitSpeechRecognition?: typeof SpeechRecognition }).SpeechRecognition ||
-        (window as Window & { SpeechRecognition?: typeof SpeechRecognition; webkitSpeechRecognition?: typeof SpeechRecognition }).webkitSpeechRecognition
+      const w = window as any
+      const SR = w.SpeechRecognition || w.webkitSpeechRecognition
 
       if (SR) {
         const recognition = new SR()
