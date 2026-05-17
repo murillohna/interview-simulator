@@ -128,7 +128,7 @@ export default function VoiceRecorder({ onTranscript, disabled }: Props) {
         recognition.lang = 'en-US'
         recognitionRef.current = recognition
 
-        recognition.onresult = (event) => {
+        recognition.onresult = (event: any) => {
           let final = ''
           for (let i = 0; i < event.results.length; i++) {
             if (event.results[i].isFinal) {
