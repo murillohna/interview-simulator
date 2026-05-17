@@ -39,7 +39,8 @@ export default function VoiceRecorder({ onTranscript, disabled }: Props) {
   const streamRef = useRef<MediaStream | null>(null)
   const chunksRef = useRef<Blob[]>([])
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const recognitionRef = useRef<SpeechRecognition | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const recognitionRef = useRef<any>(null)
   const transcriptRef = useRef('')
   const startTimeRef = useRef(0)
   const audioUrlRef = useRef<string | null>(null)

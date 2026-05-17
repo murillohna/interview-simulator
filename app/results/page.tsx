@@ -37,6 +37,7 @@ export default function ResultsPage() {
       return
     }
     setSession(s)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handleDownload() {
